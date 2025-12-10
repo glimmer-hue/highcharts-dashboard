@@ -14,8 +14,10 @@
 <div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
 
 <script>
-const actualValue = 1.22; // 實際長期資金比率，例如 120%
-const maxValue = Math.max(actualValue * 1.2, 1); // 自動調整 max，比實際值多 20% 或至少 1
+// 設定實際長期資金比率
+const actualValue = 1.2232; // 例如 120%
+// 自動調整 max 值，保留指針空間
+const maxValue = Math.max(actualValue * 1.2, 1.5);
 
 Highcharts.chart('container', {
     chart: { type: 'gauge', plotBackgroundColor: null, plotBorderWidth: 0, plotShadow: false, height: '80%' },
@@ -39,9 +41,9 @@ Highcharts.chart('container', {
         },
         lineWidth: 0,
         plotBands: [
-            { from: 0, to: Math.min(0.4, maxValue), color: '#DF5353', thickness: 20 },   // 紅色
-            { from: 0.4, to: Math.min(0.75, maxValue), color: '#DDDF0D', thickness: 20 }, // 黃色
-            { from: 0.75, to: maxValue, color: '#55BF3B', thickness: 20 }  // 綠色
+            { from: 0, to: 0.8, color: '#DF5353', thickness: 20 },   // 紅燈
+            { from: 0.8, to: 1.0, color: '#DDDF0D', thickness: 20 }, // 黃燈
+            { from: 1.0, to: maxValue, color: '#55BF3B', thickness: 20 } // 綠燈
         ]
     },
     
