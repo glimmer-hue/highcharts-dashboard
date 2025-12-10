@@ -6,6 +6,9 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<style>
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+</style>
 </head>
 <body>
 <div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
@@ -13,8 +16,14 @@
 <script>
 Highcharts.chart('container', {
     chart: { type: 'gauge', plotBackgroundColor: null, plotBorderWidth: 0, plotShadow: false, height: '80%' },
-    title: { text: '負債比率' },
+    
+    title: { 
+        text: '負債比率',
+        y: 60  // 標題往下移
+    },
+    
     pane: { startAngle: -90, endAngle: 90, background: null, center: ['50%', '75%'], size: '110%' },
+    
     yAxis: {
         min: 0,
         max: 1,
@@ -32,9 +41,10 @@ Highcharts.chart('container', {
             { from: 0.75, to: 1.00, color: '#DF5353', thickness: 20 }
         ]
     },
+    
     series: [{
         name: '負債比率',
-        data: [0.7088], // <-- 實際數值
+        data: [0.7001], // ← 這裡可以改成你的實際數值
         dataLabels: {
             enabled: true,
             formatter: function () { return (this.y*100).toFixed(2)+'%'; },
